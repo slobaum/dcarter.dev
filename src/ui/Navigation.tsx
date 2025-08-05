@@ -9,18 +9,19 @@ export enum Routes {
     launches = "/launches",
 };
 
-const HeaderNav = styled.nav<{ open?: boolean }>`
+const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
     position: absolute;
     bottom: 10px;
-    right: 400px;
+    right: 500px;
     a {
         float: right;
         margin: 5px 15px 0 0;
-        transform: translateY(200px);
+        transform: ${props => props.atHome ? 'translateY(200px)' : 'translateY(0)'};
+        transition: transform ${theme.anim.speed.slow} ${theme.anim.ease.bounce};
     }
 `;
 
-const HomeNav = styled.nav<{ open?: boolean }>`
+const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
     margin: 1em calc(${theme.spacing.nameMarginRight} + 18px) 0 0;
     z-index: 8;
     float: right;
@@ -62,11 +63,12 @@ const HomeNav = styled.nav<{ open?: boolean }>`
 export const Navigation: FC<{
     inHeader?: boolean;
     open?: boolean;
-}> = ({ inHeader, open }) => {
+    atHome?: boolean;
+}> = ({ inHeader, open, atHome }) => {
     const Wrap = inHeader ? HeaderNav : HomeNav;
 
     return (
-        <Wrap open={open}>
+        <Wrap open={open} atHome={atHome}>
             {inHeader && (
                 <Link href={Routes.home}>home</Link>
             )}

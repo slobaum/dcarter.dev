@@ -45,9 +45,15 @@ const Wrap = styled.div`
     overflow: auto;
 `;
 
-const Header = styled.header<{ open?: boolean; }>`
+const Header = styled.header<{ open?: boolean; atHome?: boolean; }>`
     margin: 0;
-    height: ${props => props.open ? '40%' : '0'};
+    height: ${props => props.open && !props.atHome ? (
+        '75px'
+    ) : props.open ? (
+        '40%'
+    ) : (
+        '0'
+    )};
     background-color: ${theme.color.backgroundDark};
     position: relative;
     overflow: hidden;
@@ -101,7 +107,7 @@ const Name = styled.h1<{ visible: boolean; }>`
 export const App: FC = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [match] = useRoute(Routes.home);
-
+    const atHome = !!match;
 
     useEffect(() => {
         setOpen(() => true);
@@ -109,13 +115,13 @@ export const App: FC = () => {
 
     return (
         <Wrap>
-            <Header open={open}>
+            <Header open={open} atHome={atHome}>
                 <Name visible={open}>
                     daniel carter
                 </Name>
-                <Navigation inHeader open={open} />
+                <Navigation inHeader open={open} atHome={atHome} />
             </Header>
-            <Navigation open={open} />
+            <Navigation open={open} atHome={atHome} />
             <Switch>
                 <Route path={Routes.home}></Route>
                 <Route path={Routes.about}>
