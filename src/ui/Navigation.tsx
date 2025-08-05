@@ -3,10 +3,10 @@ import type { FC } from "react";
 import { Link } from "wouter";
 import { theme } from "src/style/theme";
 
-export enum Routes {
-    home = "/",
-    about = "/about",
-    launches = "/launches",
+export class Routes {
+    static home = "/";
+    static about = "/about";
+    static launches = "/launches";
 };
 
 const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
