@@ -10,9 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@linaria/core": "^6.3.0",
-    "@linaria/react": "^6.3.0",
-    "@wyw-in-js/vite": "^0.7.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "wouter": "^3.7.1"

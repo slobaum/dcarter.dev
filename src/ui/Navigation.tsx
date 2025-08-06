@@ -1,7 +1,8 @@
-import { styled } from "@linaria/react";
+import styled from '@emotion/styled';
 import type { FC } from "react";
 import { Link } from "wouter";
 import { theme } from "src/style/theme";
+import { mediaQuery } from 'src/style/mediaQuery';
 
 export class Routes {
     static home = "/";
@@ -11,22 +12,50 @@ export class Routes {
 
 const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
     position: absolute;
-    bottom: 10px;
-    right: 500px;
-    a {
+    bottom: ${theme.spacing.navHeaderBottomStupidSmall};
+    right: ${theme.spacing.marginRightSmall};
+    ${mediaQuery.medium(`
+       bottom: ${theme.spacing.navHeaderBottomSmall};
+    `)}
+    ${mediaQuery.large(`
+        bottom: ${theme.spacing.navHeaderBottom};
+        right: ${theme.spacing.navMarginRight};
+    `)}
+
+    a, a:visited {
         float: right;
+        white-space: nowrap;
         margin: 5px 15px 0 0;
+        border-right: 5px solid ${theme.color.headerLinkText};
         transform: ${props => props.atHome ? 'translateY(200px)' : 'translateY(0)'};
-        transition: transform ${theme.anim.speed.slow} ${theme.anim.ease.bounce};
+        text-align: right;
+        display: block;
+        font-size: 1.2em;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+        padding: 0px 10px 3px 0;
+        text-decoration: none;
+        transition: transform ${theme.anim.speed.slow} ${theme.anim.ease.inOut}
+            , opacity ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
+        opacity: ${props => props.atHome ? '0' : '1'};
+    }
+    a:hover, a:active {
+        border-color: #6b8999;
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
     }
 `;
 
 const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
-    margin: 1em calc(${theme.spacing.nameMarginRight} + 18px) 0 0;
+    margin: 1em calc(${theme.spacing.marginRightSmall} + 18px) 0 0;
     z-index: 8;
-    float: right;
+    ${mediaQuery.large(`
+        margin: 1em calc(${theme.spacing.marginRight} + 18px) 0 0;
+    `)}
+    height: 0;
+    max-height: 0;
+
     a, a:visited {
         margin: 10px 0;
+        white-space: nowrap;
         text-align: right;
         display: block;
         font-size: 1.2em;
@@ -35,7 +64,13 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
         padding: 0px 10px 3px 0;
         text-decoration: none;
         transition: transform ${theme.anim.speed.slow} ${theme.anim.ease.inOut}, opacity ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
-        transform: ${props => props.open ? 'translateY(0)' : 'translateY(-50px)'};
+        transform: ${props => props.open && !props.atHome ? (
+            'translateY(-1400px)'
+        ) : props.open ? (
+            'translateY(0)'
+        ) : (
+            'translateY(-50px)'
+        )};
         opacity: ${props => props.open ? '1' : '0'};
 
         &:nth-child(0) {

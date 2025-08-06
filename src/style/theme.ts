@@ -23,6 +23,11 @@ export const theme = {
         },
     },
     spacing: {
-        nameMarginRight: '100px',
+        marginRight: '5rem',
+        marginRightSmall: '1rem',
+        navMarginRight: '30rem',
+        navHeaderBottom: '1rem',
+        navHeaderBottomSmall: '3rem',
+        navHeaderBottomStupidSmall: '5rem',
     },
 };

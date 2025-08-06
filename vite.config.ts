@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import wyw from '@wyw-in-js/vite';
 import path from "path";
 
 // https://vite.dev/config/
@@ -10,5 +9,5 @@ export default defineConfig({
       'src': path.resolve(__dirname, './src'),
     },
   },
-  plugins: [react(), wyw()],
+  plugins: [react()],
 })
