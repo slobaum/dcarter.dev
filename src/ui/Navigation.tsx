@@ -46,10 +46,10 @@ const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
 `;
 
 const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
-    margin: 1em calc(${theme.spacing.marginRightSmall} + 18px) 0 0;
-    z-index: 8;
+    margin: 0 calc(${theme.spacing.marginRightSmall} + 18px) 0 0;
+    z-index: 80;
     ${mediaQuery.large(`
-        margin: 1em calc(${theme.spacing.marginRight} + 18px) 0 0;
+        margin: 0 calc(${theme.spacing.marginRight} + 18px) 0 0;
     `)}
     height: 0;
     max-height: 0;

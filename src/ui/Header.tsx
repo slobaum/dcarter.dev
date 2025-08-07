@@ -12,7 +12,7 @@ const HeaderWrap = styled.header<{ open?: boolean; atHome?: boolean; }>`
     overflow: hidden;
     transition: height ${theme.anim.speed.fast} ${theme.anim.ease.inOut}, min-height ${theme.anim.speed.fast} ${theme.anim.ease.inOut};
     border-bottom: 1px solid ${theme.color.borderLight};
-    z-index: 10;
+    z-index: 100;
     &:after {
         /* second border */
         position: absolute;
@@ -61,7 +61,7 @@ const Name = styled.h1<{ visible: boolean; }>`
     text-align: right;
     transition: bottom ${theme.anim.speed.slow} ${theme.anim.ease.bounce};
     transition-delay: ${theme.anim.speed.fast};
-    z-index: 1;
+    z-index: 10;
     ${mediaQuery.large(`
         right: ${theme.spacing.marginRight};
     `)}
