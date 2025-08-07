@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react'
 import { theme } from 'src/style/theme';
+import { mediaQuery } from 'src/style/mediaQuery';
 
 const appear = keyframes`
   from {
@@ -20,10 +21,16 @@ export const Content = styled.div<{ col?: boolean; }>`
     padding: 1rem 2rem;
     overflow: auto;
     display: flex;
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
     flex-direction: ${props => props.col ? 'column' : 'row'};
     animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
-    animation-delay: 0.3s;
+    animation-delay: 0.3s;   
     animation-fill-mode: forwards;
+    box-sizing: border-box;
+
+    ${mediaQuery.xlarge(`
+       max-width: 1000px
+    `)}
+    
 `;

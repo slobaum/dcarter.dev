@@ -1,7 +1,7 @@
 const breakpoints = {
-    medium: 400,
-    large: 770,
-    xlarge: 930,
+    medium: 500,
+    large: 800,
+    xlarge: 1000,
 };
 type Breakpoints = typeof breakpoints;
 type BreakpointName = keyof Breakpoints;

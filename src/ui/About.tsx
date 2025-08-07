@@ -1,13 +1,20 @@
 import styled from "@emotion/styled";
 import type { FC } from "react"
 import avatar from "src/assets/dcarter_avatar.png";
+import { mediaQuery } from "src/style/mediaQuery";
 
 const Avatar = styled.img`
     width: 20rem;
-    height: 20rem;
+    //height: 20rem;
+    min-width: 100%;
+    max-width: 100%;
     float: right;
     margin: 0 0 2rem 2rem;
     border-radius: .5rem;
+
+    ${mediaQuery.medium(`
+       min-width: 20rem;
+    `)}
 `;
 
 export const About: FC = () => {
