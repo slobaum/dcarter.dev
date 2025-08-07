@@ -5,9 +5,9 @@ import { Route, Switch } from "wouter";
 import { theme } from 'src/style/theme';
 import { Routes } from 'src/ui/Navigation';
 import { Content } from 'src/ui/Content';
-import { Timeline } from 'src/ui/TimelineContent';
 import { Header } from 'src/ui/Header';
 import { About } from 'src/ui/About';
+import { MoreLinks } from './ui/MoreLinks';
  
 const globalStyles = css`
     :root {
@@ -56,8 +56,8 @@ export const App: FC = () => (
                 </Content>
             </Route>
             <Route path={Routes.more}>
-                <Content key="launches">
-                    <Timeline />
+                <Content key="more">
+                    <MoreLinks />
                 </Content>
             </Route>
         </Switch>
