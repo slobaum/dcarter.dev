@@ -1,6 +1,6 @@
 const breakpoints = {
     medium: 500,
-    large: 800,
+    large: 850,
     xlarge: 1000,
 };
 type Breakpoints = typeof breakpoints;

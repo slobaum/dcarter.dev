@@ -26,22 +26,22 @@ const HeaderWrap = styled.header<{ open?: boolean; atHome?: boolean; }>`
     height: ${props => props.open && props.atHome ? (
         '40vh'
     ) : props.open ? (
-        '17rem'
+        '12rem'
     ) : (
         '0'
     )};
     min-height: ${props => props.open && props.atHome ? (
         '40vh'
     ) : props.open ? (
-        '17rem'
+        '12rem'
     ) : (
         '0'
     )};
     ${props => props.open && !props.atHome ? mediaQuery.medium(`
-        height: 11rem;
-        min-height: 11rem;
+        height: 9rem;
+        min-height: 9rem;
     `) : ''}
-    ${props => props.open && !props.atHome ? mediaQuery.xlarge(`
+    ${props => props.open && !props.atHome ? mediaQuery.large(`
         height: 7rem;
         min-height: 7rem;
     `) : ''}

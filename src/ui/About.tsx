@@ -5,15 +5,16 @@ import { mediaQuery } from "src/style/mediaQuery";
 
 const Avatar = styled.img`
     width: 20rem;
-    //height: 20rem;
-    min-width: 100%;
-    max-width: 100%;
-    float: right;
-    margin: 0 0 2rem 2rem;
+    min-width: 60%;
+    max-width: 70%;
+    margin: 0 auto 1rem auto;
     border-radius: .5rem;
+    display: block;
 
     ${mediaQuery.medium(`
        min-width: 20rem;
+       float: right;
+        margin: 0 0 2rem 2rem;
     `)}
 `;
 

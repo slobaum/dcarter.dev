@@ -7,7 +7,7 @@ import { mediaQuery } from 'src/style/mediaQuery';
 export class Routes {
     static home = "/";
     static about = "/about";
-    static launches = "/launches";
+    static more = "/more";
     static personalProjects = "/myprojects";
 };
 
@@ -112,15 +112,9 @@ export const Navigation: FC<{
             <Link href={Routes.about}>
                 who is this guy?
             </Link>
-            <Link href={Routes.launches}>
-                featured launches
+            <Link href={Routes.more}>
+                want more?
             </Link>
-            <a href='https://cande.app' target="_blank" rel="noopener noreferrer">
-                personal projects
-            </a>
-            <a href='https://www.linkedin.com/in/danielftw' target='_blank' rel="noopener noreferrer">
-                linkedin
-            </a>
         </Wrap>
     );
 };

@@ -55,7 +55,7 @@ export const App: FC = () => (
                     <About />
                 </Content>
             </Route>
-            <Route path={Routes.launches}>
+            <Route path={Routes.more}>
                 <Content key="launches">
                     <Timeline />
                 </Content>
