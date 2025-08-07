@@ -7,7 +7,7 @@ import { Routes } from 'src/ui/Navigation';
 import { Content } from 'src/ui/Content';
 import { Header } from 'src/ui/Header';
 import { About } from 'src/ui/About';
-import { MoreLinks } from './ui/MoreLinks';
+import { MoreLinks } from 'src/ui/MoreLinks';
  
 const globalStyles = css`
     :root {

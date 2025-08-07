@@ -1,20 +1,9 @@
+import type { FC, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react'
 import { theme } from 'src/style/theme';
 import { mediaQuery } from 'src/style/mediaQuery';
-import type { FC, PropsWithChildren } from 'react';
+import { appear } from 'src/style/anim';
 
-const appear = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-10rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 const Wrap = styled.div<{ col?: boolean; }>`
     opacity: 0;
@@ -23,7 +12,7 @@ const Wrap = styled.div<{ col?: boolean; }>`
     display: flex;
     flex-direction: ${props => props.col ? 'column' : 'row'};
     animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
-    animation-delay: 0.3s;   
+    animation-delay: 0.3s;
     animation-fill-mode: forwards;
     box-sizing: border-box;
 `;

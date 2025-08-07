@@ -7,6 +7,7 @@ import CandEAppsIcon from 'src/assets/c_and_e_apps.png';
 import { mediaQuery } from "src/style/mediaQuery";
 import { LinkOut } from "./primitives";
 import { theme } from "src/style/theme";
+import { appear } from 'src/style/anim';
 
 
 const Wrap = styled.div`
@@ -32,6 +33,22 @@ const MoreItem = styled.div`
     gap: 1rem;
     border-bottom: 1px solid #00000022;
     flex-direction: column;
+    opacity: 0;
+    animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
+    animation-fill-mode: forwards;
+
+    &:nth-of-type(1) {
+        animation-delay: .2s;
+    }
+    &:nth-of-type(2) {
+        animation-delay: .4s;
+    }
+    &:nth-of-type(3) {
+        animation-delay: .6s;
+    }
+    &:nth-of-type(4) {
+        animation-delay: .8s;
+    }
     
     ${mediaQuery.medium(`
         flex-direction: row;

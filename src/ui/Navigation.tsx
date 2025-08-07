@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
 import type { FC } from "react";
 import { Link } from "wouter";
+import styled from '@emotion/styled';
 import { theme } from "src/style/theme";
 import { mediaQuery } from 'src/style/mediaQuery';
 
@@ -35,9 +35,19 @@ const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
         text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
         padding: 0px 10px 3px 0;
         text-decoration: none;
-        transition: transform ${theme.anim.speed.slow} ${theme.anim.ease.inOut}
+        transition: transform ${theme.anim.speed.slow} ${theme.anim.ease.bounce}
             , opacity ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
         opacity: ${props => props.atHome ? '0' : '1'};
+
+        &:nth-of-type(1) {
+            transition-delay: .2s;
+        }
+        &:nth-of-type(2) {
+            transition-delay: .4s;
+        }
+        &:nth-of-type(3) {
+            transition-delay: .6s;
+        }
     }
     a:hover, a:active {
         border-color: #6b8999;
@@ -75,20 +85,11 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
         )};
         opacity: ${props => props.open ? '1' : '0'};
 
-        &:nth-of-type(0) {
+        &:nth-of-type(1) {
             transition-delay: .2s;
         }
-        &:nth-of-type(1) {
-            transition-delay: .4s;
-        }
         &:nth-of-type(2) {
-            transition-delay: .6s;
-        }
-        &:nth-of-type(3) {
-            transition-delay: .8s;
-        }
-        &:nth-of-type(4) {
-            transition-delay: 1s;
+            transition-delay: .4s;
         }
     }
     a:hover, a:active {

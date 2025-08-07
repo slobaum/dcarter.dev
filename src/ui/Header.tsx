@@ -89,7 +89,7 @@ export const Header: FC = () => {
     useEffect(() => {
         setTimeout(() => {
             setOpen(() => true);
-        }, 1000)
+        }, 1000);
     }, []);
 
     return (
