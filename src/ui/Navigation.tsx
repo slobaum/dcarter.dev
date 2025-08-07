@@ -8,6 +8,7 @@ export class Routes {
     static home = "/";
     static about = "/about";
     static launches = "/launches";
+    static personalProjects = "/myprojects";
 };
 
 const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
@@ -52,6 +53,7 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
     `)}
     height: 0;
     max-height: 0;
+    align-self: flex-end;
 
     a, a:visited {
         margin: 10px 0;
@@ -73,19 +75,19 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
         )};
         opacity: ${props => props.open ? '1' : '0'};
 
-        &:nth-child(0) {
+        &:nth-of-type(0) {
             transition-delay: .2s;
         }
-        &:nth-child(1) {
+        &:nth-of-type(1) {
             transition-delay: .4s;
         }
-        &:nth-child(2) {
+        &:nth-of-type(2) {
             transition-delay: .6s;
         }
-        &:nth-child(3) {
+        &:nth-of-type(3) {
             transition-delay: .8s;
         }
-        &:nth-child(4) {
+        &:nth-of-type(4) {
             transition-delay: 1s;
         }
     }
