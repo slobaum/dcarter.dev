@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import styled from '@emotion/styled';
 import { theme } from "src/style/theme";
 import { mediaQuery } from 'src/style/mediaQuery';
+import {LinkOut} from "./primitives";
 
 export class Routes {
     static home = "/";
@@ -91,6 +92,9 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
         &:nth-of-type(2) {
             transition-delay: .4s;
         }
+        &:nth-of-type(3) {
+            transition-delay: .6s;
+        }
     }
     a:hover, a:active {
         border-color: ${theme.color.headerLinkTextActive};
@@ -113,8 +117,11 @@ export const Navigation: FC<{
             <Link href={Routes.about}>
                 who is this guy?
             </Link>
+            <LinkOut href="https://cande.app">
+                projects
+            </LinkOut>
             <Link href={Routes.more}>
-                want more?
+                links
             </Link>
         </Wrap>
     );
