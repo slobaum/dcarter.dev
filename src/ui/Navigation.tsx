@@ -111,9 +111,6 @@ export const Navigation: FC<{
 
     return (
         <Wrap open={open} atHome={atHome}>
-            {inHeader && (
-                <Link href={Routes.home}>home</Link>
-            )}
             <Link href={Routes.about}>
                 who is this guy?
             </Link>
@@ -123,6 +120,11 @@ export const Navigation: FC<{
             <Link href={Routes.more}>
                 links
             </Link>
+            {inHeader && (
+                <Link href={Routes.home}>
+                    ⬅ home
+                </Link>
+            )}
         </Wrap>
     );
 };
