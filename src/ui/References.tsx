@@ -95,6 +95,7 @@ const references: Array<{
     text: string[],
     source: string,
     rel: string,
+    linkedin: string,
 }> = [
     {
         text: [
@@ -105,6 +106,7 @@ const references: Array<{
         ],
         source: "Ross Meltz",
         rel: "Ross was my direct manager for 3 years on the Autodesk Forms Team",
+        linkedin: "rmeltz",
     },
     {
         text: [
@@ -113,13 +115,15 @@ const references: Array<{
         ],
         source: "Cory Wolnewitz",
         rel: "Cory was a manager on my team, the Autodesk Forms Team",
+        linkedin: "cory-wolnewitz",
     },
     {
         text: [
             "Daniel doesn't shy away from big problems, whatever is the most important work, he'll get it done. He's also one of those engineers thats so productive he'll throw in a \"oh yeah I fixed this too.\" I couldn't recommend Daniel more wholeheartedly!",
         ],
         source: "Chuck Pinkert",
-        rel: "Chuck was my direct manager on the Autodesk Forms Team"
+        rel: "Chuck was my direct manager on the Autodesk Forms Team",
+        linkedin: "chuckpinkert",
     },
     {
         text: [
@@ -127,6 +131,7 @@ const references: Array<{
         ],
         source: "Guohao Yan",
         rel: "Guohao and I worked together on the Autodesk Forms Web Team on a daily basis",
+        linkedin: "guohao-yan",
     },
     {
         text: [
@@ -134,6 +139,7 @@ const references: Array<{
         ],
         source: "Rohan Singh",
         rel: "Rohan was the designer on my team for 2 years, the Autodesk Data Federation Team",
+        linkedin: "rohansingh1712",
     },
     {
         text: [
@@ -143,6 +149,7 @@ const references: Array<{
         ],
         source: "Leah Friedberg",
         rel: "Leah and I collaborated to integrate and co-develop a Platform Component for reuse by many teams while on the Autodesk Forms Team",
+        linkedin: "leahfriedbergdesign",
     },
     {
         text: [
@@ -150,6 +157,7 @@ const references: Array<{
         ],
         source: "Joseph Kappes",
         rel: "Joe was a Product Manager on my team, the Autodesk Forms Team",
+        linkedin: "joseph-kappes-1651abb2",
     },
     {
         text: [
@@ -162,6 +170,7 @@ const references: Array<{
         ],
         source: "Francesca Chua",
         rel: "Fran was the primary designer for the Autodesk Forms team, we worked together for 4 years",
+        linkedin: "francescachua",
     }
 ]
 
@@ -180,13 +189,15 @@ export const References: FC = () => {
                 </small>
             </SubHeadline>
             <Columns>
-                {randomizedRefs.map(({ text, source, rel }) => (
+                {randomizedRefs.map(({ text, source, rel, linkedin }) => (
                     <Quote key={`${source}-${rel}`}>
                         {text.map(content => (<p key={content}>{content}</p>))}
-                        <Cite>
+                        <LinkOut href={`https://www.linkedin.com/in/${linkedin}`}>
+                            <Cite>
                                 {source}
-                        </Cite>
-                        <Rel>{rel}</Rel>
+                            </Cite>
+                            <Rel>{rel}</Rel>
+                        </LinkOut>
                     </Quote>
                 ))}
             </Columns>
