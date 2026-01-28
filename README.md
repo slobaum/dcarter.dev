@@ -1,11 +1,8 @@
-# React + TypeScript + Vite
+# The developer website for Daniel J Carter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Find this live at [https://dcarter.dev](https://dcarter.dev). This site outlines the work history and capabilities of Daniel as a software engineer. It links out to other resources related to his career and capabilities.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I build this site using React + TypeScript + Vite.
 
 ## Expanding the ESLint configuration
 

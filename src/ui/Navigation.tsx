@@ -3,13 +3,14 @@ import { Link } from "wouter";
 import styled from '@emotion/styled';
 import { theme } from "src/style/theme";
 import { mediaQuery } from 'src/style/mediaQuery';
-import {LinkOut} from "./primitives";
+import { LinkOut } from "src/ui/primitives";
 
 export class Routes {
     static home = "/";
     static about = "/about";
     static more = "/more";
     static personalProjects = "/myprojects";
+    static references = "/references";
 };
 
 const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
@@ -48,6 +49,9 @@ const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
         }
         &:nth-of-type(3) {
             transition-delay: .6s;
+        }
+        &:nth-of-type(4) {
+            transition-delay: .8s;
         }
     }
     a:hover, a:active {
@@ -95,6 +99,9 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
         &:nth-of-type(3) {
             transition-delay: .6s;
         }
+        &:nth-of-type(4) {
+            transition-delay: .8s;
+        }
     }
     a:hover, a:active {
         border-color: ${theme.color.headerLinkTextActive};
@@ -113,6 +120,9 @@ export const Navigation: FC<{
         <Wrap open={open} atHome={atHome}>
             <Link href={Routes.about}>
                 who is this guy?
+            </Link>
+            <Link href={Routes.references}>
+                why work with me?
             </Link>
             <LinkOut href="https://cande.app">
                 projects

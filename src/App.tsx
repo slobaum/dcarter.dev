@@ -8,6 +8,7 @@ import { Content } from 'src/ui/Content';
 import { Header } from 'src/ui/Header';
 import { About } from 'src/ui/About';
 import { MoreLinks } from 'src/ui/MoreLinks';
+import { References } from 'src/ui/References';
  
 const globalStyles = css`
     :root {
@@ -58,6 +59,11 @@ export const App: FC = () => (
             <Route path={Routes.more}>
                 <Content key="more">
                     <MoreLinks />
+                </Content>
+            </Route>
+            <Route path={Routes.references}>
+                <Content key="refs">
+                    <References />
                 </Content>
             </Route>
         </Switch>
