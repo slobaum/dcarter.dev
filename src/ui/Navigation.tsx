@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import styled from '@emotion/styled';
 import { theme } from "src/style/theme";
 import { mediaQuery } from 'src/style/mediaQuery';
-import { LinkOut } from "src/ui/primitives";
 
 export class Routes {
     static home = "/";
@@ -124,9 +123,6 @@ export const Navigation: FC<{
             <Link href={Routes.references}>
                 references
             </Link>
-            <LinkOut href="https://cande.app">
-                projects
-            </LinkOut>
             <Link href={Routes.more}>
                 links
             </Link>

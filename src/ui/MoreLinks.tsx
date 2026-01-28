@@ -121,12 +121,6 @@ export const MoreLinks: FC = () => {
                 description="Find me on LinkedIn to see my detailed work history, education, and referrals. Work History includes product and feature launches in various positions."
             />
             <MoreBlock
-                icon={CodepenIcon}
-                link="https://codepen.io/slobaum"
-                title="CodePen"
-                description="Codepen has been a glorious playground for experimentation for years. Some of my pens have garnered over 10k views and hundreds of likes/pins/saves."
-            />
-            <MoreBlock
                 icon={CandEAppsIcon}
                 link="https://cande.app"
                 title="Personal Projects"
@@ -137,6 +131,12 @@ export const MoreLinks: FC = () => {
                 link="https://carterembry.com/category/professional-opinions/technical-jargon"
                 title="Technical Blogs"
                 description="I'm proud to have published at least a few blogs related to React and the NodeJS ecosystem. You can find them here."
+            />
+            <MoreBlock
+                icon={CodepenIcon}
+                link="https://codepen.io/slobaum"
+                title="CodePen"
+                description="Codepen has been a glorious playground for experimentation for years. Some of my pens have garnered over 10k views and hundreds of likes/pins/saves."
             />
         </Wrap>
     );
