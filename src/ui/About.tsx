@@ -33,12 +33,14 @@ const P = styled.p<{ $larger?: boolean; }>`
     padding-left: 1rem;
     ${({ $larger }) => $larger ? 'font-size: 1.2rem' : ''}
 `;
+const Clear = styled.div`
+    clear: both;
+`;
 const Header = styled.h2`
     color: ${theme.color.text};
     background: ${theme.color.backgroundDark};
     padding-left: 1rem;
 `;
-const Divider = styled.hr``;
 const Card = styled.div`
     break-inside: avoid;
     background: ${theme.color.backgroundDark};
@@ -79,9 +81,8 @@ export const About: FC = () => {
                 I'm also a proven full-stack developer with extensive experience leading engineering teams to ship high-impact products. My primary focus today is building robust, scalable systems with performant web front-end applications, utilizing and contributing to backend services and APIs.
             </P>
 
-            <Divider />
-
             <Header>Technical skill set</Header>
+            <Clear />
             <Columns>
                 <Card>
                     <SubHeader>Front-end</SubHeader>
@@ -133,8 +134,6 @@ export const About: FC = () => {
                 </Card>
             </Columns>
 
-            <Divider />
-
             <Header>Representative projects</Header>
             <Columns>
                 <Card>
@@ -174,8 +173,6 @@ export const About: FC = () => {
                 Personal side projects continue to explore emerging front-end patterns and performance tuning techniques.
             </P>
 
-            <Divider />
-
             <Header>Leadership &amp; collaboration</Header>
             <List>
                 <li><Strong>Engineering Tech Lead</Strong> - Led cross-functional squads (front-end, back-end, QA) from concept through production, ensuring delivery timelines and quality standards.</li>
@@ -184,8 +181,6 @@ export const About: FC = () => {
                 <li><Strong>Engineering Individual Contributions</Strong> - Primary developer for major projects while implementing and enforced unit test best practices as well as code coverage. Maintained &gt; 90% unit test coverage on a React + Typescript web application.</li>
             </List>
 
-            <Divider />
-
             <Header>What I Bring to Your Team</Header>
             <List>
                 <li><Strong>End-to-End Delivery</Strong> - Ability to design, develop, test, and deploy complete product features across the stack.</li>
@@ -193,8 +188,6 @@ export const About: FC = () => {
                 <li><Strong>Technical Depth & Breadth</Strong> - Strong command of both front-end and back-end technologies, plus a pragmatic approach to choosing the right tool for each problem.</li>
                 <li><Strong>Leadership & Ownership</Strong> - Proven track record of guiding teams, improving processes, and driving measurable impact on user experience and business metrics.</li>
             </List>
-
-            <Divider />
 
             <Header>Get in Touch</Header>
             <P $larger>
