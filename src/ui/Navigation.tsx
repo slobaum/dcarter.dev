@@ -122,7 +122,7 @@ export const Navigation: FC<{
                 who is this guy?
             </Link>
             <Link href={Routes.references}>
-                why work with me?
+                references
             </Link>
             <LinkOut href="https://cande.app">
                 projects

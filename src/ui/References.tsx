@@ -89,7 +89,7 @@ const shuffleArray = <T, >(array: T[]) => {
 const references: Array<{
     text: string[],
     source: string,
-    rel: string,
+    title: string,
 }> = [
     {
         text: [
@@ -99,7 +99,7 @@ const references: Array<{
             "I would highly recommend Daniel to any organization looking for someone who combines technical excellence, strong execution, and genuine leadership.",
         ],
         source: "Ross Meltz",
-        rel: "Direct Manager @ Autodesk",
+        title: "Manager @ Autodesk",
     },
     {
         text: [
@@ -107,45 +107,57 @@ const references: Array<{
             "I was consistently impressed by his velocity, communication, and professionalism. He approaches all technical work, including the non-glamorous tasks, thoroughly, thoughtfully, and swiftly. It was an absolute pleasure working with Daniel, and I highly recommend him.",
         ],
         source: "Cory Wolnewitz",
-        rel: "Manager @ Autodesk",
+        title: "Manager @ Autodesk",
     },
     {
         text: [
             "Daniel doesn't shy away from big problems, whatever is the most important work, he'll get it done. He's also one of those engineers thats so productive he'll throw in a \"oh yeah I fixed this too.\" I couldn't recommend Daniel more wholeheartedly!",
         ],
         source: "Chuck Pinkert",
-        rel: "Manager @ Autodesk"
+        title: "Manager @ Autodesk"
     },
     {
         text: [
             'I worked with Daniel on the Autodesk Forms team, and he always impress me with his talent for web development. He is a smart, insightful, and proactive teammate who is also incredibly supportive. Daniel has a rare ability to solve complex technical challenges while ensuring everyone on the team feels heard and empowered. It was a true pleasure working with him, and I would highly recommend Daniel to anyone looking for a strong Frontend Team Lead',
         ],
         source: "Guohao Yan",
-        rel: "Engineer, Team Member @ Autodesk"
+        title: "Engineer, Team Member @ Autodesk"
     },
     {
         text: [
             "Daniel is one of the best engineers I've worked with as a designer. As my engineering counterpart on several projects at Autodesk, Daniel was a true collaborator in solving user problems together. His insights on the designs were smart and helpful. He pushed back on design decisions where he had a different point of view, which ultimately led to the best customer outcomes. He took challenging designs and came up with creative ways to implement them. He was what I'd expect from an ideal engineering partner in a prod dev team of PM's and Designers. I highly recommend him as an engineering partner in any project!",
         ],
         source: "Rohan Singh",
-        rel: "Designer @ Autodesk",
+        title: "Designer @ Autodesk",
     },
     {
         text: [
-            "I had the pleasure of working with Daniel, and I can confidently say he is one of the most thorough and reliable engineers I’ve worked with. Daniel brings a rare combination of deep technical expertise, strong ownership, and genuine care for the quality of his work. He approaches every task thoughtfully, makes sure nothing is overlooked, and consistently delivers with a high standard.",
+            "I had the pleasure of working with Daniel, and I can confidently say he is one of the most thorough and reliable engineers I've worked with. Daniel brings a rare combination of deep technical expertise, strong ownership, and genuine care for the quality of his work. He approaches every task thoughtfully, makes sure nothing is overlooked, and consistently delivers with a high standard.",
             "Beyond his technical skills, Daniel is a great collaborator. He communicates clearly, is open to feedback, and always looks for the best solution rather than the easiest one. His professionalism, attention to detail, and commitment make him someone you can truly trust on complex projects.",
             "Any team would be lucky to have Daniel, and I wholeheartedly recommend him.",
         ],
         source: "Leah Friedberg",
-        rel: "Designer @ Autodesk"
+        title: "Designer @ Autodesk"
     },
     {
         text: [
             "Daniel is a fantastic developer and leader. He has a lot of excellent qualities, but what most sets him apart is his attention to both the technical and human side of the tools we created. He's the type of developer that never loses sight of the purpose and use of products he builds. As a result, he brings fantastic insights from a technical, UX, and product angle to whatever he touches. He could identify how technical constraints and UX designs would intersect early on in projects and produce creative solutions. Daniel is wonderful combination of thorough, thoughtful, and fast. I strongly recommend him.",
         ],
         source: "Joseph Kappes",
-        rel: "Product Manager @ Autodesk"
+        title: "Product Manager @ Autodesk"
     },
+    {
+        text: [
+            "Daniel is one of the most exceptional web engineers I've had the privilege of working with during our time at Autodesk—and he is genuinely one of the best colleagues and collaborators I've known.",
+            "Daniel is deeply skilled in his craft. He brings a rare combination of strong engineering fundamentals and an excellent eye for visual design, which makes working with him incredibly seamless. He doesn't just build things that work—he builds things that look right, feel right, and make sense for the user.",
+            "What truly sets Daniel apart, though, is his emotional intelligence. He's one of those rare engineering gems who leads with empathy and curiosity. He actively seeks to understand user concerns and needs, communicates clearly and thoughtfully across functions, and consistently elevates conversations rather than complicating them. He's a natural collaborator.",
+            "Daniel also has an exceptional ability to rapidly put together working prototypes during feature discussions. This skill alone made decision-making faster, more concrete, and more productive—ideas didn't stay abstract for long when Daniel was involved. His work helped teams align quickly and move forward with confidence.",
+            "Daniel is an asset to any team, not only because of his technical excellence, but because he is a genuinely good human—thoughtful, collaborative, and grounded— which make building things with him a much more pleasant and productive experience. Any organization would be lucky to have him.",
+            "I would absolutely recommend Daniel without hesitation.",
+        ],
+        source: "Francesca Chua",
+        title: "Designer @ Autodesk",
+    }
 ]
 
 export const References: FC = () => {
@@ -163,13 +175,13 @@ export const References: FC = () => {
                 </small>
             </SubHeadline>
             <Columns>
-                {randomizedRefs.map(({text, source, rel}) => (
-                    <Quote key={`${source}-${rel}`}>
+                {randomizedRefs.map(({text, source, title}) => (
+                    <Quote key={`${source}-${title}`}>
                         {text.map(content => (<p key={content}>{content}</p>))}
                         <Cite>
                             <CiteContent>
                                 {source}
-                                <span>{rel}</span>
+                                <span>{title}</span>
                             </CiteContent>
                         </Cite>
                     </Quote>
