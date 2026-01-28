@@ -51,6 +51,7 @@ const Cite = styled.cite`
     line-height: 1.25rem;
     font-style: none;
     font-weight: bold;
+    margin-top: .7rem;
     &::before {
         display: block;
         content: "❯";
@@ -74,6 +75,16 @@ const Columns = styled.div`
         columns: 2;
     `)}
 `;
+const Rel = styled.small`
+    margin-top: .8rem;
+    font-style: italic;
+    text-align: right;
+    display: block;
+    line-height: 1.2rem;
+    font-size: .9rem;
+    padding-left: 30%;
+    box-sizing: border-box;
+`;
 
 const shuffleArray = <T, >(array: T[]) => {
     // fischer-yates algorithm for shuffling
@@ -90,6 +101,7 @@ const references: Array<{
     text: string[],
     source: string,
     title: string,
+    rel: string,
 }> = [
     {
         text: [
@@ -100,6 +112,7 @@ const references: Array<{
         ],
         source: "Ross Meltz",
         title: "Manager @ Autodesk",
+        rel: "Ross was my direct manager for 3 years at Autodesk",
     },
     {
         text: [
@@ -108,20 +121,23 @@ const references: Array<{
         ],
         source: "Cory Wolnewitz",
         title: "Manager @ Autodesk",
+        rel: "Cory was a manager on my team",
     },
     {
         text: [
             "Daniel doesn't shy away from big problems, whatever is the most important work, he'll get it done. He's also one of those engineers thats so productive he'll throw in a \"oh yeah I fixed this too.\" I couldn't recommend Daniel more wholeheartedly!",
         ],
         source: "Chuck Pinkert",
-        title: "Manager @ Autodesk"
+        title: "Manager @ Autodesk",
+        rel: "Chuck was my direct manager on Forms team at Autodesk"
     },
     {
         text: [
             'I worked with Daniel on the Autodesk Forms team, and he always impress me with his talent for web development. He is a smart, insightful, and proactive teammate who is also incredibly supportive. Daniel has a rare ability to solve complex technical challenges while ensuring everyone on the team feels heard and empowered. It was a true pleasure working with him, and I would highly recommend Daniel to anyone looking for a strong Frontend Team Lead',
         ],
         source: "Guohao Yan",
-        title: "Engineer, Team Member @ Autodesk"
+        title: "Engineer, Team Member @ Autodesk",
+        rel: "I worked with Guohao on the Forms web team on a daily basis",
     },
     {
         text: [
@@ -129,6 +145,7 @@ const references: Array<{
         ],
         source: "Rohan Singh",
         title: "Designer @ Autodesk",
+        rel: "Rohan was the designer on my team at Autodesk for 2 years",
     },
     {
         text: [
@@ -137,14 +154,16 @@ const references: Array<{
             "Any team would be lucky to have Daniel, and I wholeheartedly recommend him.",
         ],
         source: "Leah Friedberg",
-        title: "Designer @ Autodesk"
+        title: "Designer @ Autodesk",
+        rel: "I collaborated with Leah on a Platform component that would be reused by many teams",
     },
     {
         text: [
             "Daniel is a fantastic developer and leader. He has a lot of excellent qualities, but what most sets him apart is his attention to both the technical and human side of the tools we created. He's the type of developer that never loses sight of the purpose and use of products he builds. As a result, he brings fantastic insights from a technical, UX, and product angle to whatever he touches. He could identify how technical constraints and UX designs would intersect early on in projects and produce creative solutions. Daniel is wonderful combination of thorough, thoughtful, and fast. I strongly recommend him.",
         ],
         source: "Joseph Kappes",
-        title: "Product Manager @ Autodesk"
+        title: "Product Manager @ Autodesk",
+        rel: "Joe was a Product Manager on my team, we collaborated on multiple projects",
     },
     {
         text: [
@@ -157,6 +176,7 @@ const references: Array<{
         ],
         source: "Francesca Chua",
         title: "Designer @ Autodesk",
+        rel: "Fran was the primary designer on the Forms team, we worked together for 4 years",
     }
 ]
 
@@ -175,7 +195,7 @@ export const References: FC = () => {
                 </small>
             </SubHeadline>
             <Columns>
-                {randomizedRefs.map(({text, source, title}) => (
+                {randomizedRefs.map(({ text, source, title, rel }) => (
                     <Quote key={`${source}-${title}`}>
                         {text.map(content => (<p key={content}>{content}</p>))}
                         <Cite>
@@ -184,6 +204,7 @@ export const References: FC = () => {
                                 <span>{title}</span>
                             </CiteContent>
                         </Cite>
+                        <Rel>{rel}</Rel>
                     </Quote>
                 ))}
             </Columns>
