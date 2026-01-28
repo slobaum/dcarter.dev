@@ -55,18 +55,12 @@ const Cite = styled.cite`
     &::before {
         display: block;
         content: "❯";
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         padding-right: .5rem;
         color: ${theme.color.popText};
         font-style: normal;
-    }
-`;
-const CiteContent = styled.div`
-    text-align: left;
-    span {
-        font-style: italic;
-        display: block;
-        font-weight: normal;
+        position: relative;
+        top: -.15rem;
     }
 `;
 const Columns = styled.div`
@@ -100,7 +94,6 @@ const shuffleArray = <T, >(array: T[]) => {
 const references: Array<{
     text: string[],
     source: string,
-    title: string,
     rel: string,
 }> = [
     {
@@ -111,8 +104,7 @@ const references: Array<{
             "I would highly recommend Daniel to any organization looking for someone who combines technical excellence, strong execution, and genuine leadership.",
         ],
         source: "Ross Meltz",
-        title: "Manager @ Autodesk",
-        rel: "Ross was my direct manager for 3 years at Autodesk",
+        rel: "Ross was my direct manager for 3 years on the Autodesk Forms Team",
     },
     {
         text: [
@@ -120,32 +112,28 @@ const references: Array<{
             "I was consistently impressed by his velocity, communication, and professionalism. He approaches all technical work, including the non-glamorous tasks, thoroughly, thoughtfully, and swiftly. It was an absolute pleasure working with Daniel, and I highly recommend him.",
         ],
         source: "Cory Wolnewitz",
-        title: "Manager @ Autodesk",
-        rel: "Cory was a manager on my team",
+        rel: "Cory was a manager on my team, the Autodesk Forms Team",
     },
     {
         text: [
             "Daniel doesn't shy away from big problems, whatever is the most important work, he'll get it done. He's also one of those engineers thats so productive he'll throw in a \"oh yeah I fixed this too.\" I couldn't recommend Daniel more wholeheartedly!",
         ],
         source: "Chuck Pinkert",
-        title: "Manager @ Autodesk",
-        rel: "Chuck was my direct manager on Forms team at Autodesk"
+        rel: "Chuck was my direct manager on the Autodesk Forms Team"
     },
     {
         text: [
             'I worked with Daniel on the Autodesk Forms team, and he always impress me with his talent for web development. He is a smart, insightful, and proactive teammate who is also incredibly supportive. Daniel has a rare ability to solve complex technical challenges while ensuring everyone on the team feels heard and empowered. It was a true pleasure working with him, and I would highly recommend Daniel to anyone looking for a strong Frontend Team Lead',
         ],
         source: "Guohao Yan",
-        title: "Engineer, Team Member @ Autodesk",
-        rel: "I worked with Guohao on the Forms web team on a daily basis",
+        rel: "Guohao and I worked together on the Autodesk Forms Web Team on a daily basis",
     },
     {
         text: [
             "Daniel is one of the best engineers I've worked with as a designer. As my engineering counterpart on several projects at Autodesk, Daniel was a true collaborator in solving user problems together. His insights on the designs were smart and helpful. He pushed back on design decisions where he had a different point of view, which ultimately led to the best customer outcomes. He took challenging designs and came up with creative ways to implement them. He was what I'd expect from an ideal engineering partner in a prod dev team of PM's and Designers. I highly recommend him as an engineering partner in any project!",
         ],
         source: "Rohan Singh",
-        title: "Designer @ Autodesk",
-        rel: "Rohan was the designer on my team at Autodesk for 2 years",
+        rel: "Rohan was the designer on my team for 2 years, the Autodesk Data Federation Team",
     },
     {
         text: [
@@ -154,16 +142,14 @@ const references: Array<{
             "Any team would be lucky to have Daniel, and I wholeheartedly recommend him.",
         ],
         source: "Leah Friedberg",
-        title: "Designer @ Autodesk",
-        rel: "I collaborated with Leah on a Platform component that would be reused by many teams",
+        rel: "Leah and I collaborated to integrate and co-develop a Platform Component for reuse by many teams while on the Autodesk Forms Team",
     },
     {
         text: [
             "Daniel is a fantastic developer and leader. He has a lot of excellent qualities, but what most sets him apart is his attention to both the technical and human side of the tools we created. He's the type of developer that never loses sight of the purpose and use of products he builds. As a result, he brings fantastic insights from a technical, UX, and product angle to whatever he touches. He could identify how technical constraints and UX designs would intersect early on in projects and produce creative solutions. Daniel is wonderful combination of thorough, thoughtful, and fast. I strongly recommend him.",
         ],
         source: "Joseph Kappes",
-        title: "Product Manager @ Autodesk",
-        rel: "Joe was a Product Manager on my team, we collaborated on multiple projects",
+        rel: "Joe was a Product Manager on my team, the Autodesk Forms Team",
     },
     {
         text: [
@@ -175,8 +161,7 @@ const references: Array<{
             "I would absolutely recommend Daniel without hesitation.",
         ],
         source: "Francesca Chua",
-        title: "Designer @ Autodesk",
-        rel: "Fran was the primary designer on the Forms team, we worked together for 4 years",
+        rel: "Fran was the primary designer for the Autodesk Forms team, we worked together for 4 years",
     }
 ]
 
@@ -195,14 +180,11 @@ export const References: FC = () => {
                 </small>
             </SubHeadline>
             <Columns>
-                {randomizedRefs.map(({ text, source, title, rel }) => (
-                    <Quote key={`${source}-${title}`}>
+                {randomizedRefs.map(({ text, source, rel }) => (
+                    <Quote key={`${source}-${rel}`}>
                         {text.map(content => (<p key={content}>{content}</p>))}
                         <Cite>
-                            <CiteContent>
                                 {source}
-                                <span>{title}</span>
-                            </CiteContent>
                         </Cite>
                         <Rel>{rel}</Rel>
                     </Quote>
