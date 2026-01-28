@@ -1,8 +1,7 @@
 import { useMemo, type FC } from "react";
 import styled from '@emotion/styled';
 import { theme } from 'src/style/theme';
-import { LinkOut } from "src/ui/primitives";
-import { mediaQuery } from "src/style/mediaQuery";
+import { Columns, LinkOut } from "src/ui/primitives";
 
 const Wrap = styled.div`
     padding-bottom: 2rem;
@@ -62,12 +61,6 @@ const Cite = styled.cite`
         position: relative;
         top: -.15rem;
     }
-`;
-const Columns = styled.div`
-    columns: 1;
-    ${mediaQuery.large(`
-        columns: 2;
-    `)}
 `;
 const Rel = styled.small`
     margin-top: .8rem;
