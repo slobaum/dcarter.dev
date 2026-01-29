@@ -40,6 +40,7 @@ const Header = styled.h2`
     color: ${theme.color.popText};
     background: ${theme.color.backgroundDark};
     padding-left: 1rem;
+    border-radius: .2rem;
 `;
 const Card = styled.div`
     break-inside: avoid;
@@ -50,6 +51,8 @@ const Card = styled.div`
     border-left-style: solid;
     border-left-width: 15px;
     border-color: ${theme.color.borderLight};
+    border-radius: .2rem;
+    overflow: hidden;
 
     opacity: 0;
     animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
@@ -89,15 +92,36 @@ export const About: FC = () => {
 
             <Header>Technical skill set</Header>
             <Clear />
-            <Columns>
+            <Columns $three>
                 <Card>
                     <SubHeader>Front-end</SubHeader>
                     <List>
                         <li>JavaScript / TypeScript (ES2022+)</li>
                         <li>Modern CSS (Flexbox, Grid, animations, transitions)</li>
-                        <li>Framework-agnostic component architecture (custom elements, vanilla JS)</li>
+                        <li>Framework-agnostic reusable component architecture (custom elements, vanilla JS)</li>
                         <li>State management patterns, performance optimization</li>
-                        <li>React, Hook State Management, Redux, CSS-in-JS</li>
+                        <li>React, React Hooks, Hook State Management, Redux, CSS-in-JS</li>
+                        <li>Web workers, asynchronous processes, concurrency</li>
+                    </List>
+                </Card>
+                <Card>
+                    <SubHeader>Design & Motion</SubHeader>
+                    <List>
+                        <li>Design Systems (Storybook)</li>
+                        <li>Resuable components for consistency</li>
+                        <li>Pixel-perfect UI</li>
+                        <li>Rapid interactive prototypes</li>
+                        <li>Motion design</li>
+                        <li>Visual storytelling</li>
+                    </List>
+                </Card>
+                <Card>
+                    <SubHeader>Technical Team Leadership</SubHeader>
+                    <List>
+                        <li>Cross-discipline stakeholder communication</li>
+                        <li>Translating product ideas to technical requirements</li>
+                        <li>Task breakdown and timeline forecasting</li>
+                        <li>Ongoing progress reporting</li>
                     </List>
                 </Card>
                 <Card>
@@ -111,15 +135,17 @@ export const About: FC = () => {
                         <li>SQL (PostgreSQL, MySQL)</li>
                         <li>NoSQL (MongoDB, Redis, IndexedDB)</li>
                         <li>Query optimization, schema design, migrations</li>
+                        <li>Multithreading, concurrency</li>
                     </List>
                 </Card>
                 <Card>
-                    <SubHeader>Design & Motion</SubHeader>
+                    <SubHeader>Testing & Quality</SubHeader>
                     <List>
-                        <li>Pixel-perfect UI</li>
-                        <li>Motion design</li>
-                        <li>Rapid interactive prototypes</li>
-                        <li>Visual storytelling</li>
+                        <li>Unit, integration, and end-to-end testing (Jest, React Testing Library, Cypress, unittest)</li>
+                        <li>LLM / AI test writing automation</li>
+                        <li>Automated linting, type checking, code coverage enforcement</li>
+                        <li>Software release management</li>
+                        <li>SEMVER / version incrementation enforcement</li>
                     </List>
                 </Card>
                 <Card>
@@ -129,14 +155,6 @@ export const About: FC = () => {
                         <li>CI/CD pipelines (Jenkins, Vercel)</li>
                         <li>Groovy for Jenkins pipeline scripting</li>
                         <li>Monitoring & logging (Datadog, New Relic)</li>
-                    </List>
-                </Card>
-                <Card>
-                    <SubHeader>Testing & Quality</SubHeader>
-                    <List>
-                        <li>Unit, integration, and end-to-end testing (Jest, React Testing Library, Cypress, unittest)</li>
-                        <li>LLM / AI test writing automation</li>
-                        <li>Automated linting, type checking, code coverage enforcement</li>
                     </List>
                 </Card>
             </Columns>
@@ -152,12 +170,16 @@ export const About: FC = () => {
                     <P>From Create-React-App to a fully custom Webpack + Babel + Jest configuration. Added custom Typescript, ESlint, and Jest configurations, documenting new systems for team adoption.</P>
                 </Card>
                 <Card>
-                    <SubHeader>Replaced monolithic legacy app with React + Redux SPA</SubHeader>
-                    <P>Powered exclusively by a REST API, which required developing new API capabilities in Python/Django. Migrated functionality from Backbone Marionette + SASS to React, Redux, React-Router. Created new architectural patterns to decrease code coupling and increase development speed. Fully unit tested via Jasmine + Enzyme.</P>
-                </Card>
-                <Card>
                     <SubHeader>React-based Components</SubHeader>
                     <P>Created reusable UI primitives (uploaders, modals, form controls) that integrate cleanly in React-based environments for cross-organizational impact.</P>
+                </Card>
+                <Card>
+                    <SubHeader>Replaced monolithic legacy app with React + Redux SPA</SubHeader>
+                    <P>Powered exclusively by a REST API, developed new API capabilities in Python/Django. Migrated functionality from Backbone Marionette + SASS to React, Redux, React-Router. Created new architectural patterns to decrease code coupling and increase development speed. Fully unit tested via Jasmine + Enzyme.</P>
+                </Card>
+                <Card>
+                    <SubHeader>Developed an import system that was previously push-only</SubHeader>
+                    <P>This was a hackathon project adopted into the production environment. I demonstrated that our data federation app could allow search + import to change the paradigm of data management from a push to a pull system.</P>
                 </Card>
                 <Card>
                     <SubHeader>Zero-Framework Component Library</SubHeader>
@@ -177,7 +199,7 @@ export const About: FC = () => {
                 </Card>
             </Columns>
             <P>
-                Personal side projects continue to explore emerging front-end patterns and performance tuning techniques.
+                <LinkOut href="https://cande.app">Personal side projects continue to explore emerging front-end patterns and performance tuning techniques.</LinkOut>
             </P>
 
             <Header>Leadership &amp; collaboration</Header>

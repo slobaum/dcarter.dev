@@ -9,13 +9,14 @@ const Wrap = styled.div`
 `;
 const Headline = styled.h2`
     text-align: center;
-    color: ${theme.color.popText}
 `;
 const SubHeadline = styled.h3`
     text-align: center;
     margin-bottom: 3rem;
+    color: ${theme.color.popText};
     small {
         display: block;
+        color: ${theme.color.text};
     }
 `;
 const Quote = styled.blockquote`
@@ -31,6 +32,7 @@ const Quote = styled.blockquote`
     border-left-width: 15px;
     border-color: ${theme.color.borderLight};
     break-inside: avoid;
+    border-radius: .2rem;
 
     opacity: 0;
     animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
@@ -147,7 +149,7 @@ const references: Array<{
             "Any team would be lucky to have Daniel, and I wholeheartedly recommend him.",
         ],
         source: "Leah Friedberg",
-        rel: "Leah and I collaborated to integrate and co-develop a Platform Component for reuse by many teams while on the Autodesk Forms Team",
+        rel: "Leah and I collaborated to integrate and co-develop a Platform Component for reuse across the organization. She was a platform designer and I was on the Autodesk Forms Team",
         linkedin: "leahfriedbergdesign",
     },
     {

@@ -107,7 +107,7 @@ export const Navigation: FC<{
             </Link>
             {inHeader && (
                 <Link href={Routes.home}>
-                    ⬅ home
+                    ❮ home
                 </Link>
             )}
         </Wrap>
