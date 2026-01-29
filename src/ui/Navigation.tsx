@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import styled from '@emotion/styled';
 import { theme } from "src/style/theme";
 import { mediaQuery } from 'src/style/mediaQuery';
+import {iterativeDelay} from "src/style/anim";
 
 export class Routes {
     static home = "/";
@@ -40,18 +41,7 @@ const HeaderNav = styled.nav<{ open?: boolean, atHome?: boolean, }>`
             , opacity ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
         opacity: ${props => props.atHome ? '0' : '1'};
 
-        &:nth-of-type(1) {
-            transition-delay: .2s;
-        }
-        &:nth-of-type(2) {
-            transition-delay: .4s;
-        }
-        &:nth-of-type(3) {
-            transition-delay: .6s;
-        }
-        &:nth-of-type(4) {
-            transition-delay: .8s;
-        }
+        ${iterativeDelay(4)}
     }
     a:hover, a:active {
         border-color: #6b8999;
@@ -89,18 +79,7 @@ const HomeNav = styled.nav<{ open?: boolean, atHome?: boolean }>`
         )};
         opacity: ${props => props.open ? '1' : '0'};
 
-        &:nth-of-type(1) {
-            transition-delay: .2s;
-        }
-        &:nth-of-type(2) {
-            transition-delay: .4s;
-        }
-        &:nth-of-type(3) {
-            transition-delay: .6s;
-        }
-        &:nth-of-type(4) {
-            transition-delay: .8s;
-        }
+        ${iterativeDelay(4)}
     }
     a:hover, a:active {
         border-color: ${theme.color.headerLinkTextActive};
@@ -134,3 +113,4 @@ export const Navigation: FC<{
         </Wrap>
     );
 };
+

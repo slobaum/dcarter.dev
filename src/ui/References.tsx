@@ -2,6 +2,7 @@ import { useMemo, type FC } from "react";
 import styled from '@emotion/styled';
 import { theme } from 'src/style/theme';
 import { Columns, LinkOut } from "src/ui/primitives";
+import { appear, iterativeDelay } from 'src/style/anim';
 
 const Wrap = styled.div`
     padding-bottom: 2rem;
@@ -30,6 +31,11 @@ const Quote = styled.blockquote`
     border-left-width: 15px;
     border-color: ${theme.color.borderLight};
     break-inside: avoid;
+
+    opacity: 0;
+    animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
+    animation-fill-mode: forwards;
+    ${iterativeDelay()}
 
     &::before {
         content: "“";

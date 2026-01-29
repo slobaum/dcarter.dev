@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import type { FC } from "react"
 import avatar from "src/assets/dcarter_avatar.png";
 import { mediaQuery } from "src/style/mediaQuery";
-import { appear } from "src/style/anim";
+import { appear, iterativeDelay } from "src/style/anim";
 import { theme } from "src/style/theme";
-import { Columns } from "src/ui/primitives";
+import { Columns, LinkOut } from "src/ui/primitives";
 
 const Avatar = styled.img`
     width: 20rem;
@@ -37,7 +37,7 @@ const Clear = styled.div`
     clear: both;
 `;
 const Header = styled.h2`
-    color: ${theme.color.text};
+    color: ${theme.color.popText};
     background: ${theme.color.backgroundDark};
     padding-left: 1rem;
 `;
@@ -50,13 +50,19 @@ const Card = styled.div`
     border-left-style: solid;
     border-left-width: 15px;
     border-color: ${theme.color.borderLight};
+
+    opacity: 0;
+    animation: ${appear} ${theme.anim.speed.slow} ${theme.anim.ease.inOut};
+    animation-fill-mode: forwards;
+    ${iterativeDelay()}
+
     > p {
         padding: 0 1rem 1rem 2rem;
     }
 `;
 const SubHeader = styled.h3`
     background: ${theme.color.borderDark};
-    color: ${theme.color.popText};
+    color: ${theme.color.text};
     padding: .2rem 1rem;
     margin: 0;
 `;
@@ -65,7 +71,7 @@ const List = styled.ul`
     padding: 0 .5rem 1rem 3rem;
 `;
 const Strong = styled.strong`
-    color: ${theme.color.popText};
+    color: ${theme.color.linkTextActive};
 `;
 
 export const About: FC = () => {
@@ -91,6 +97,20 @@ export const About: FC = () => {
                         <li>Modern CSS (Flexbox, Grid, animations, transitions)</li>
                         <li>Framework-agnostic component architecture (custom elements, vanilla JS)</li>
                         <li>State management patterns, performance optimization</li>
+                        <li>React, Hook State Management, Redux, CSS-in-JS</li>
+                    </List>
+                </Card>
+                <Card>
+                    <SubHeader>Back-end</SubHeader>
+                    <List>
+                        <li>Node.js (scripting, Express)</li>
+                        <li>Python (Django)</li>
+                        <li>PHP (Laravel, custom MVC)</li>
+                        <li>RESTful API design</li>
+                        <li>Authentication & authorization</li>
+                        <li>SQL (PostgreSQL, MySQL)</li>
+                        <li>NoSQL (MongoDB, Redis, IndexedDB)</li>
+                        <li>Query optimization, schema design, migrations</li>
                     </List>
                 </Card>
                 <Card>
@@ -103,24 +123,11 @@ export const About: FC = () => {
                     </List>
                 </Card>
                 <Card>
-                    <SubHeader>Back-end</SubHeader>
-                    <List>
-                        <li>Node.js (scripting, Express)</li>
-                        <li>Python (Django)</li>
-                        <li>PHP (Laravel, custom MVC)</li>
-                        <li>RESTful API design</li>
-                        <li>Authentication & authorization</li>
-                        <li>SQL (PostgreSQL, MySQL)</li>
-                        <li>NoSQL basics (MongoDB, Redis, IndexedDB)</li>
-                        <li>Query optimization, schema design, migrations</li>
-                    </List>
-                </Card>
-                <Card>
                     <SubHeader>Infrastructure</SubHeader>
                     <List>
                         <li>Docker & container basics</li>
                         <li>CI/CD pipelines (Jenkins, Vercel)</li>
-                        <li>Groovy-basics for Jenkins pipeline scripting</li>
+                        <li>Groovy for Jenkins pipeline scripting</li>
                         <li>Monitoring & logging (Datadog, New Relic)</li>
                     </List>
                 </Card>
@@ -191,7 +198,10 @@ export const About: FC = () => {
 
             <Header>Get in Touch</Header>
             <P $larger>
-                I'm excited to contribute my front-end leaning, full-stack expertise to challenging projects that demand reliability, scalability, and clean architecture. Feel free to reach out to discuss how I can help turn your product vision into a robust, production-ready solution.
+                I'm excited to contribute my front-end leaning, full-stack expertise to challenging projects that demand reliability, scalability, and clean architecture.
+            </P>
+            <P $larger>
+                Feel free to <LinkOut href="https://www.linkedin.com/in/danielftw">reach out on LinkedIn</LinkOut> to discuss how I can help turn your product vision into a robust, production-ready solution.
             </P>
         </div>
     )
