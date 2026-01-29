@@ -92,7 +92,7 @@ export const About: FC = () => {
 
             <Header>Technical skill set</Header>
             <Clear />
-            <Columns $three>
+            <Columns $three $padding="0 0 0 1rem">
                 <Card>
                     <SubHeader>Front-end</SubHeader>
                     <List>
@@ -160,7 +160,7 @@ export const About: FC = () => {
             </Columns>
 
             <Header>Representative projects</Header>
-            <Columns>
+            <Columns $padding="0 0 0 1rem">
                 <Card>
                     <SubHeader>Table-to-Calendar View</SubHeader>
                     <P>Worked with platform team to co-develop and implement a reusable calendar component with cross-organizational impact. This introduced a new paradigm in visualizing upcoming date-driven actions.</P>
