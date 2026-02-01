@@ -172,8 +172,40 @@ const references: Array<{
         source: "Francesca Chua",
         rel: "Fran was the primary designer for the Autodesk Forms team, we worked together for 4 years",
         linkedin: "francescachua",
-    }
-]
+    },
+    {
+        text: [
+            "I worked with Daniel for about 4 years at Eventbrite. He was consistently one of the most proactive and talented people on our team. His desire for improvement and knowledge was on perpetual display as he continually pushed for better standards and practices. In addition he's funny, thoughtful, humble, and one of the best all-around teammates you could ever ask for.",
+            "If you don't hire him, I'll be forced to start my own company so that I can hire him myself!",
+        ],
+        source: "Andy Matthews",
+        rel: "Andy and I worked together at Eventbrite for 4 years",
+        linkedin: "andymatthews",
+    },
+    {
+        text: [
+            "I had the pleasure of working closely with Daniel and he was truly exceptional. As a front end engineer he combined strong technical skill with calm steady leadership that made everyone around him better.",
+            "Daniel was an incredible right hand to work with. I consistently relied on him for thoughtful technical decisions clear communication and mentorship across the team. He had a great instinct for balancing quality velocity and long term maintainability and he elevated the work of everyone he partnered with.",
+            "Beyond his technical ability Daniel showed up as a leader. He took ownership stepped in when things were ambiguous and helped drive alignment without ego. He was dependable collaborative and deeply trusted.",
+            "Any team would be lucky to have Daniel. He is an amazing engineer and an even better teammate!",
+        ],
+        source: "Loretta Stokes",
+        rel: "Loretta was my direct manager on the Events Create team at Eventbrite",
+        linkedin: "lorettastokes",
+    },
+    {
+        text: [
+            "I had the pleasure of working closely with Daniel Carter, and I can say without hesitation that he is one of the strongest engineers I've collaborated with. Daniel is not only an excellent web engineer, but also a thoughtful, proactive, and highly communicative teammate who consistently elevates the teams he works on.",
+            "From a technical standpoint, Daniel brings a deep understanding of modern web engineering practices and applies them with care and precision. He approaches design reviews and feature development with a strong sense of ownership, always thinking beyond just implementation to consider scalability, maintainability, and long-term impact. One of Daniel's core strengths is his ability to identify potential issues early in the process — he doesn't wait for problems to surface in production. Instead, he raises thoughtful concerns during design and planning phases and does so in a constructive, solutions-oriented way.",
+            "Equally impressive are Daniel's communication skills. He has a rare ability to clearly articulate complex technical ideas to both technical and non-technical stakeholders. He knows when and how to involve the right people, keeps stakeholders informed, and ensures alignment across teams.",
+            "Beyond his technical and communication strengths, Daniel is just an awesome person to work with. He brings a friendly, approachable, and positive attitude to the team, making collaboration feel natural and energizing. Daniel's ability to speak up and share his honest thoughts on team dynamics is also extremely refreshing and has helped significantly improve team culture.",
+            "Any company would be fortunate to have Daniel on their engineering team. His strong technical skills, excellent judgment, and outstanding interpersonal abilities make him a rare find. I wholeheartedly recommend Daniel to any organization looking for a talented web engineer who will make an immediate and lasting impact.",
+        ],
+        source: "Sriram Madhusudhan",
+        rel: "Sriram and I collaborated on multiple projects as API/Web counterparts at Autodesk",
+        linkedin: "srirammadhu",
+    },
+];
 
 export const References: FC = () => {
     const randomizedRefs = useMemo(() => shuffleArray(references), []);
