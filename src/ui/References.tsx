@@ -205,6 +205,28 @@ const references: Array<{
         rel: "Sriram and I collaborated on multiple projects as API/Web counterparts at Autodesk",
         linkedin: "srirammadhu",
     },
+    {
+        text: [
+            "I worked directly with Daniel on the same team at Eventbrite. We worked together for 3 1/2 years. It was my first job out of college, and Daniel played an integral part in my early career development as a software engineer.",
+            "At some point throughout our time working together, we became a team of two engineering one of Eventbrite's core products. I watched him take lead on technical design, project planning, and communicating with outside stakeholders to see our tasks to completion. ",
+            "I learned a lot not only technically, but in developing the soft skills required from senior-level engineers in particular on how to take ownership of a project and care about the quality of work being produced.",
+            "Daniel is an excellent engineer, kind-hearted individual, a thoughtful mentor to rising-talent, and an easy decision as someone you'd want on your team.",
+        ],
+        source: "Rashad Russell",
+        rel: "Rashad and I worked together on the Eventbrite Events team on a daily basis for over 3 years",
+        linkedin: "rashadrussell",
+    },
+    {
+        text: [
+            "I worked closely with Daniel for over three years, during which he was a Senior Software Engineer on our web application. I also had the pleasure of interviewing Daniel when he joined the team, and it was clear from those conversations that he would be a strong addition. When we later discussed bringing him onto the Forms team, he was an obvious choice.",
+            "Early on, we were the only two web engineers on the team, collaborating on large, high impact features while also owning and delivering meaningful projects independently. Daniel consistently held himself and the team to a high standard, with a strong focus on writing and maintaining quality code.",
+            "He was a key driver in improving our legacy codebase, advocating for better patterns, libraries, and practices that made the developer experience more streamlined and maintainable. Daniel was also excellent at communicating with stakeholders across engineering, product, design, and customer support, helping keep teams aligned and informed.",
+            "Beyond his technical contributions, Daniel is simply a great person to work with. Over time, we became friends, which speaks to his positive attitude and the way he makes others feel heard and accepted. Any engineering team would be fortunate to have Daniel, and I would strongly recommend him.",
+        ],
+        source: "Naveed Sufi",
+        rel: "Naveed and I worked together on the Autodesk Forms team on a daily basis for over 3 years",
+        linkedin: "nhsufi",
+    },
 ];
 
 export const References: FC = () => {
