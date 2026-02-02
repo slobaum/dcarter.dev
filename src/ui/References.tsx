@@ -1,7 +1,7 @@
 import { useMemo, type FC } from "react";
 import styled from '@emotion/styled';
 import { theme } from 'src/style/theme';
-import { Columns, LinkOut } from "src/ui/primitives";
+import { Columns, H2, LinkOut } from "src/ui/primitives";
 import { appear, iterativeDelay } from 'src/style/anim';
 
 const Wrap = styled.div`
@@ -92,12 +92,28 @@ const shuffleArray = <T, >(array: T[]) => {
     return shuffled;
 }
 
-const references: Array<{
+const REF_TYPES = {
+    manager: "manager",
+    productDesign: "productDesign",
+    engineer: "engineer",
+} as const;
+type RefType = typeof REF_TYPES[keyof typeof REF_TYPES];
+
+const typeOrder = [
+    REF_TYPES.manager,
+    REF_TYPES.productDesign,
+    REF_TYPES.engineer,
+];
+
+type Reference = {
     text: string[],
     source: string,
     rel: string,
     linkedin: string,
-}> = [
+    type: RefType,
+};
+
+const references: Array<Reference> = [
     {
         text: [
             "I worked closely with Daniel as his manager, and he's an exceptional engineer who consistently delivers impact in complex, high-pressure environments.",
@@ -108,6 +124,7 @@ const references: Array<{
         source: "Ross Meltz",
         rel: "Ross was my direct manager for 3 years on the Autodesk Forms Team",
         linkedin: "rmeltz",
+        type: REF_TYPES.manager,
     },
     {
         text: [
@@ -117,6 +134,7 @@ const references: Array<{
         source: "Cory Wolnewitz",
         rel: "Cory was a manager on my team, the Autodesk Forms Team",
         linkedin: "cory-wolnewitz",
+        type: REF_TYPES.manager,
     },
     {
         text: [
@@ -125,6 +143,7 @@ const references: Array<{
         source: "Chuck Pinkert",
         rel: "Chuck was my direct manager on the Autodesk Forms Team",
         linkedin: "chuckpinkert",
+        type: REF_TYPES.manager,
     },
     {
         text: [
@@ -133,6 +152,7 @@ const references: Array<{
         source: "Guohao Yan",
         rel: "Guohao and I worked together on the Autodesk Forms Web Team on a daily basis",
         linkedin: "guohao-yan",
+        type: REF_TYPES.engineer,
     },
     {
         text: [
@@ -141,6 +161,7 @@ const references: Array<{
         source: "Rohan Singh",
         rel: "Rohan was the designer on my team for 2 years, the Autodesk Data Federation Team",
         linkedin: "rohansingh1712",
+        type: REF_TYPES.productDesign,
     },
     {
         text: [
@@ -151,6 +172,7 @@ const references: Array<{
         source: "Leah Friedberg",
         rel: "Leah and I collaborated to integrate and co-develop a Platform Component for reuse across the organization. She was a platform designer and I was on the Autodesk Forms Team",
         linkedin: "leahfriedbergdesign",
+        type: REF_TYPES.productDesign,
     },
     {
         text: [
@@ -159,6 +181,7 @@ const references: Array<{
         source: "Joseph Kappes",
         rel: "Joe was a Product Manager on my team, the Autodesk Forms Team",
         linkedin: "joseph-kappes-1651abb2",
+        type: REF_TYPES.productDesign,
     },
     {
         text: [
@@ -172,6 +195,7 @@ const references: Array<{
         source: "Francesca Chua",
         rel: "Fran was the primary designer for the Autodesk Forms team, we worked together for 4 years",
         linkedin: "francescachua",
+        type: REF_TYPES.productDesign,
     },
     {
         text: [
@@ -181,6 +205,7 @@ const references: Array<{
         source: "Andy Matthews",
         rel: "Andy and I worked together at Eventbrite for 4 years",
         linkedin: "andymatthews",
+        type: REF_TYPES.engineer,
     },
     {
         text: [
@@ -192,6 +217,7 @@ const references: Array<{
         source: "Loretta Stokes",
         rel: "Loretta was my direct manager on the Events Create team at Eventbrite",
         linkedin: "lorettastokes",
+        type: REF_TYPES.manager,
     },
     {
         text: [
@@ -204,6 +230,7 @@ const references: Array<{
         source: "Sriram Madhusudhan",
         rel: "Sriram and I collaborated on multiple projects as API/Web counterparts at Autodesk",
         linkedin: "srirammadhu",
+        type: REF_TYPES.engineer,
     },
     {
         text: [
@@ -215,6 +242,7 @@ const references: Array<{
         source: "Rashad Russell",
         rel: "Rashad and I worked together on the Eventbrite Events team on a daily basis for over 3 years",
         linkedin: "rashadrussell",
+        type: REF_TYPES.engineer,
     },
     {
         text: [
@@ -226,11 +254,38 @@ const references: Array<{
         source: "Naveed Sufi",
         rel: "Naveed and I worked together on the Autodesk Forms team on a daily basis for over 3 years",
         linkedin: "nhsufi",
+        type: REF_TYPES.engineer,
     },
 ];
 
+const refsByType = references.reduce((byType, ref) => {
+    byType[ref.type].push(ref);
+
+    return byType;
+}, {
+    [REF_TYPES.manager]: [],
+    [REF_TYPES.productDesign]: [],
+    [REF_TYPES.engineer]: [],
+} as {
+    [REF_TYPES.manager]: Reference[],
+    [REF_TYPES.productDesign]: Reference[],
+    [REF_TYPES.engineer]: Reference[],
+});
+
+const typeToHeaderText = {
+    [REF_TYPES.manager]: "Managers",
+    [REF_TYPES.productDesign]: "Product / Design",
+    [REF_TYPES.engineer]: "Engineering",
+};
+
 export const References: FC = () => {
-    const randomizedRefs = useMemo(() => shuffleArray(references), []);
+    const refsByTypeRandom = useMemo(() => {
+        return {
+            [REF_TYPES.manager]: shuffleArray(refsByType[REF_TYPES.manager]),
+            [REF_TYPES.productDesign]: shuffleArray(refsByType[REF_TYPES.productDesign]),
+            [REF_TYPES.engineer]: shuffleArray(refsByType[REF_TYPES.engineer]),
+        }
+    }, []);
 
     return (
         <Wrap>
@@ -243,19 +298,26 @@ export const References: FC = () => {
                     References were copied directly from my <LinkOut href="https://www.linkedin.com/in/danielftw#:~:text=Recommendations">LinkedIn profile</LinkOut>.
                 </small>
             </SubHeadline>
-            <Columns>
-                {randomizedRefs.map(({ text, source, rel, linkedin }) => (
-                    <Quote key={`${source}-${rel}`}>
-                        {text.map(content => (<p key={content}>{content}</p>))}
-                        <LinkOut href={`https://www.linkedin.com/in/${linkedin}`}>
-                            <Cite>
-                                {source}
-                            </Cite>
-                            <Rel>{rel}</Rel>
-                        </LinkOut>
-                    </Quote>
-                ))}
-            </Columns>
+            {typeOrder.map(type => (
+                <>
+                    <H2 id={`#header_${type}`}>
+                        {typeToHeaderText[type]} <small>({refsByTypeRandom[type].length})</small>
+                    </H2>
+                    <Columns>
+                        {refsByTypeRandom[type].map(({ text, source, rel, linkedin }) => (
+                            <Quote key={`${source}-${rel}`}>
+                                {text.map(content => (<p key={content}>{content}</p>))}
+                                <LinkOut href={`https://www.linkedin.com/in/${linkedin}`}>
+                                    <Cite>
+                                        {source}
+                                    </Cite>
+                                    <Rel>{rel}</Rel>
+                                </LinkOut>
+                            </Quote>
+                        ))}
+                    </Columns>
+                </>
+            ))}
         </Wrap>
     )
 };

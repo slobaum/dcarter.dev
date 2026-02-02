@@ -4,7 +4,7 @@ import avatar from "src/assets/dcarter_avatar.png";
 import { mediaQuery } from "src/style/mediaQuery";
 import { appear, iterativeDelay } from "src/style/anim";
 import { theme } from "src/style/theme";
-import { Columns, LinkOut } from "src/ui/primitives";
+import { Columns, H2, LinkOut } from "src/ui/primitives";
 
 const Avatar = styled.img`
     width: 20rem;
@@ -18,6 +18,7 @@ const Avatar = styled.img`
     animation-delay: 1s;
     animation-fill-mode: forwards;
     position: relative;
+    z-index: 20;
 
     ${mediaQuery.medium(`
         min-width: 20rem;
@@ -35,12 +36,6 @@ const P = styled.p<{ $larger?: boolean; }>`
 `;
 const Clear = styled.div`
     clear: both;
-`;
-const Header = styled.h2`
-    color: ${theme.color.popText};
-    background: ${theme.color.backgroundDark};
-    padding-left: 1rem;
-    border-radius: .2rem;
 `;
 const Card = styled.div`
     break-inside: avoid;
@@ -82,7 +77,7 @@ export const About: FC = () => {
         <div>   
             <Avatar src={avatar} alt="A photo of Daniel Carter" />
 
-            <Header>About me</Header>
+            <H2>About me</H2>
             <P>
                 I'm Daniel, a designer-by-training turned software engineer who lives for pixel-perfect, motion-rich experiences. I blend a deep appreciation for fine art (charcoal sketching, pottery) with a passion for modern web development, treating every UI as a canvas and every line of code as a brushstroke.
             </P>
@@ -90,7 +85,7 @@ export const About: FC = () => {
                 I'm also a proven full-stack developer with extensive experience leading engineering teams to ship high-impact products. My primary focus today is building robust, scalable systems with performant web front-end applications, utilizing and contributing to backend services and APIs.
             </P>
 
-            <Header>Technical skill set</Header>
+            <H2>Technical skill set</H2>
             <Clear />
             <Columns $three $padding="0 0 0 1rem">
                 <Card>
@@ -159,7 +154,7 @@ export const About: FC = () => {
                 </Card>
             </Columns>
 
-            <Header>Representative projects</Header>
+            <H2>Representative projects</H2>
             <Columns $padding="0 0 0 1rem">
                 <Card>
                     <SubHeader>Table-to-Calendar View</SubHeader>
@@ -202,7 +197,7 @@ export const About: FC = () => {
                 <LinkOut href="https://cande.app">Personal side projects continue to explore emerging front-end patterns and performance tuning techniques.</LinkOut>
             </P>
 
-            <Header>Leadership &amp; collaboration</Header>
+            <H2>Leadership &amp; collaboration</H2>
             <List>
                 <li><Strong>Engineering Tech Lead</Strong> - Led cross-functional squads (front-end, back-end, QA) from concept through production, ensuring delivery timelines and quality standards.</li>
                 <li><Strong>Mentorship</Strong> - Onboarded junior engineers, instituted code-review and unit test best practices, and promoted a culture of continuous learning and technical excellence.</li>
@@ -210,7 +205,7 @@ export const About: FC = () => {
                 <li><Strong>Engineering Individual Contributions</Strong> - Primary developer for major projects while implementing and enforced unit test best practices as well as code coverage. Maintained &gt; 90% unit test coverage on a React + Typescript web application.</li>
             </List>
 
-            <Header>What I Bring to Your Team</Header>
+            <H2>What I Bring to Your Team</H2>
             <List>
                 <li><Strong>End-to-End Delivery</Strong> - Ability to design, develop, test, and deploy complete product features across the stack.</li>
                 <li><Strong>Scalable Architecture</Strong> - Experience building web applications that handle high traffic, large data volumes, and evolving business logic.</li>
@@ -218,7 +213,7 @@ export const About: FC = () => {
                 <li><Strong>Leadership & Ownership</Strong> - Proven track record of guiding teams, improving processes, and driving measurable impact on user experience and business metrics.</li>
             </List>
 
-            <Header>Get in Touch</Header>
+            <H2>Get in Touch</H2>
             <P $larger>
                 I'm excited to contribute my front-end leaning, full-stack expertise to challenging projects that demand reliability, scalability, and clean architecture.
             </P>
