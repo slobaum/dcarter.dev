@@ -1,4 +1,4 @@
-import { useMemo, type FC } from "react";
+import { useEffect, useMemo, useState, type FC } from "react";
 import styled from '@emotion/styled';
 import { theme } from 'src/style/theme';
 import { Columns, LinkOut } from "src/ui/primitives";
@@ -79,6 +79,16 @@ const Rel = styled.small`
     font-size: .9rem;
     padding-left: 30%;
     box-sizing: border-box;
+`;
+const Highlight = styled.div`
+    border-radius: .25rem;
+    background: #FFFFFF11;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom-style: solid;
+    border-bottom-width: 15px;
+    border-color: ${theme.color.borderDark};
 `;
 
 const shuffleArray = <T, >(array: T[]) => {
@@ -196,7 +206,7 @@ const references: Array<{
     {
         text: [
             "I had the pleasure of working closely with Daniel Carter, and I can say without hesitation that he is one of the strongest engineers I've collaborated with. Daniel is not only an excellent web engineer, but also a thoughtful, proactive, and highly communicative teammate who consistently elevates the teams he works on.",
-            "From a technical standpoint, Daniel brings a deep understanding of modern web engineering practices and applies them with care and precision. He approaches design reviews and feature development with a strong sense of ownership, always thinking beyond just implementation to consider scalability, maintainability, and long-term impact. One of Daniel's core strengths is his ability to identify potential issues early in the process — he doesn't wait for problems to surface in production. Instead, he raises thoughtful concerns during design and planning phases and does so in a constructive, solutions-oriented way.",
+            "From a technical standpoint, Daniel brings a deep understanding of modern web engineering practices and applies them with care and precision. He approaches design reviews and feature development with a strong sense of ownership, always thinking beyond just implementation to consider scalability, maintainability, and long-term impact. One of Daniel's core strengths is his ability to identify potential issues early in the process - he doesn't wait for problems to surface in production. Instead, he raises thoughtful concerns during design and planning phases and does so in a constructive, solutions-oriented way.",
             "Equally impressive are Daniel's communication skills. He has a rare ability to clearly articulate complex technical ideas to both technical and non-technical stakeholders. He knows when and how to involve the right people, keeps stakeholders informed, and ensures alignment across teams.",
             "Beyond his technical and communication strengths, Daniel is just an awesome person to work with. He brings a friendly, approachable, and positive attitude to the team, making collaboration feel natural and energizing. Daniel's ability to speak up and share his honest thoughts on team dynamics is also extremely refreshing and has helped significantly improve team culture.",
             "Any company would be fortunate to have Daniel on their engineering team. His strong technical skills, excellent judgment, and outstanding interpersonal abilities make him a rare find. I wholeheartedly recommend Daniel to any organization looking for a talented web engineer who will make an immediate and lasting impact.",
@@ -207,8 +217,69 @@ const references: Array<{
     },
 ];
 
+const highlights: Array<[
+    source: string,
+    text: string,
+]> = [
+    ["Ross Meltz", "I worked closely with Daniel as his manager, and he's an exceptional engineer who consistently delivers impact in complex, high-pressure environments.",],
+    ["Ross Meltz", "As his manager, I came to deeply value how resilient, dedicated, and trusted Daniel is, especially when things get difficult. He proactively engages in hard conversations constructively and helps teams move forward with clarity and confidence. His presence raises both the quality of execution and the strength of collaboration around him.",],
+    ["Ross Meltz", "Daniel is also a natural mentor and technical leader. He shares knowledge generously, supports the growth of others, and leads by example. His impact extends beyond what he delivers individually. He leaves teams stronger and better positioned for the future.",],
+    ["Ross Meltz", "I would highly recommend Daniel to any organization looking for someone who combines technical excellence, strong execution, and genuine leadership.",],
+    ["Cory Wolnewitz", "I was consistently impressed by his velocity, communication, and professionalism. He approaches all technical work, including the non-glamorous tasks, thoroughly, thoughtfully, and swiftly. It was an absolute pleasure working with Daniel, and I highly recommend him."],
+    ["Guohao Yan", "He is a smart, insightful, and proactive teammate who is also incredibly supportive. Daniel has a rare ability to solve complex technical challenges while ensuring everyone on the team feels heard and empowered."],
+    ["Rohan Singh", "He took challenging designs and came up with creative ways to implement them. He was what I'd expect from an ideal engineering partner in a prod dev team of PM's and Designers. I highly recommend him as an engineering partner in any project!"],
+    ["Leah Friedberg", "I had the pleasure of working with Daniel, and I can confidently say he is one of the most thorough and reliable engineers I've worked with. Daniel brings a rare combination of deep technical expertise, strong ownership, and genuine care for the quality of his work. He approaches every task thoughtfully, makes sure nothing is overlooked, and consistently delivers with a high standard."],
+    ["Leah Friedberg", "Beyond his technical skills, Daniel is a great collaborator. He communicates clearly, is open to feedback, and always looks for the best solution rather than the easiest one. His professionalism, attention to detail, and commitment make him someone you can truly trust on complex projects."],
+    ["Leah Friedberg", "Any team would be lucky to have Daniel, and I wholeheartedly recommend him."],
+    ["Joseph Kappes", "He has a lot of excellent qualities, but what most sets him apart is his attention to both the technical and human side of the tools we created. He's the type of developer that never loses sight of the purpose and use of products he builds. As a result, he brings fantastic insights from a technical, UX, and product angle to whatever he touches."],
+    ["Joseph Kappes", "Daniel is wonderful combination of thorough, thoughtful, and fast."],
+    ["Francesca Chua", "Daniel is one of the most exceptional web engineers I've had the privilege of working with during our time at Autodesk—and he is genuinely one of the best colleagues and collaborators I've known.",],
+    ["Francesca Chua", "Daniel is deeply skilled in his craft. He brings a rare combination of strong engineering fundamentals and an excellent eye for visual design, which makes working with him incredibly seamless. He doesn't just build things that work—he builds things that look right, feel right, and make sense for the user.",],
+    ["Francesca Chua", "What truly sets Daniel apart, though, is his emotional intelligence. He's one of those rare engineering gems who leads with empathy and curiosity. He actively seeks to understand user concerns and needs, communicates clearly and thoughtfully across functions, and consistently elevates conversations rather than complicating them. He's a natural collaborator.",],
+    ["Francesca Chua", "Daniel also has an exceptional ability to rapidly put together working prototypes during feature discussions. This skill alone made decision-making faster, more concrete, and more productive—ideas didn't stay abstract for long when Daniel was involved. His work helped teams align quickly and move forward with confidence.",],
+    ["Francesca Chua", "Daniel is an asset to any team, not only because of his technical excellence, but because he is a genuinely good human—thoughtful, collaborative, and grounded— which make building things with him a much more pleasant and productive experience. Any organization would be lucky to have him.",],
+    ["Andy Matthews", "He was consistently one of the most proactive and talented people on our team. His desire for improvement and knowledge was on perpetual display as he continually pushed for better standards and practices."],
+    ["Sriram Madhusudhan", "I had the pleasure of working closely with Daniel Carter, and I can say without hesitation that he is one of the strongest engineers I've collaborated with. Daniel is not only an excellent web engineer, but also a thoughtful, proactive, and highly communicative teammate who consistently elevates the teams he works on.",],
+    ["Sriram Madhusudhan", "From a technical standpoint, Daniel brings a deep understanding of modern web engineering practices and applies them with care and precision. He approaches design reviews and feature development with a strong sense of ownership, always thinking beyond just implementation to consider scalability, maintainability, and long-term impact. One of Daniel's core strengths is his ability to identify potential issues early in the process - he doesn't wait for problems to surface in production. Instead, he raises thoughtful concerns during design and planning phases and does so in a constructive, solutions-oriented way.",],
+    ["Sriram Madhusudhan", "Equally impressive are Daniel's communication skills. He has a rare ability to clearly articulate complex technical ideas to both technical and non-technical stakeholders. He knows when and how to involve the right people, keeps stakeholders informed, and ensures alignment across teams.",],
+    ["Sriram Madhusudhan", "Beyond his technical and communication strengths, Daniel is just an awesome person to work with. He brings a friendly, approachable, and positive attitude to the team, making collaboration feel natural and energizing. Daniel's ability to speak up and share his honest thoughts on team dynamics is also extremely refreshing and has helped significantly improve team culture.",],
+    ["Sriram Madhusudhan", "Any company would be fortunate to have Daniel on their engineering team. His strong technical skills, excellent judgment, and outstanding interpersonal abilities make him a rare find. I wholeheartedly recommend Daniel to any organization looking for a talented web engineer who will make an immediate and lasting impact.",],
+];
+
+const chooseHighlight = () => Math.floor(Math.random() * highlights.length);
+
 export const References: FC = () => {
     const randomizedRefs = useMemo(() => shuffleArray(references), []);
+
+    const [highlightIndex, setHighlightIndex] = useState<number>(chooseHighlight);
+    const [
+        highlightSource,
+        highlightText,
+    ] = highlights[highlightIndex];
+    const highlightRel = useMemo(
+        () => references.find(r => r.source === highlightSource)!.rel,
+        [highlightIndex]
+    );
+
+    useEffect(() => {
+        let timer: ReturnType<typeof setTimeout> | undefined;
+        const setTimer = () => {
+            timer = setTimeout(
+                () => {
+                    if (timer) {
+                        setHighlightIndex(chooseHighlight())
+                        setTimer();
+                    }
+                },
+                10000
+            );
+        };
+        setTimer();
+        return () => {
+            clearTimeout(timer);
+            timer = undefined;
+        };
+    }, []);
 
     return (
         <Wrap>
@@ -221,9 +292,19 @@ export const References: FC = () => {
                     References were copied directly from my <LinkOut href="https://www.linkedin.com/in/danielftw#:~:text=Recommendations">LinkedIn profile</LinkOut>.
                 </small>
             </SubHeadline>
+            <Highlight>
+                {highlightText}
+                <a href={`#${highlightSource}`}>
+                    <Cite>
+                        {highlightSource}
+                    </Cite>
+                    <Rel>{highlightRel}</Rel>
+                </a>
+            </Highlight>
             <Columns>
                 {randomizedRefs.map(({ text, source, rel, linkedin }) => (
                     <Quote key={`${source}-${rel}`}>
+                        <a id={source} />
                         {text.map(content => (<p key={content}>{content}</p>))}
                         <LinkOut href={`https://www.linkedin.com/in/${linkedin}`}>
                             <Cite>
